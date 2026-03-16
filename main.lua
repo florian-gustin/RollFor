@@ -801,6 +801,76 @@ local function plus_ones_command( args )
   end
 end
 
+
+local function announce_plus_ones_raid()
+  local loot = M.awarded_loot.get_winners()
+  local players = {}
+  for _, award in ipairs(loot) do
+    if award ~= nil then
+      if not players[award.player_name] then
+        players[award.player_name] = { award }
+      else
+        table.insert(players[award.player_name], award)
+      end
+    end
+  end
+
+  SendChatMessage("MS+1 standings:", "RAID")
+  for player_name, awards in pairs(players) do
+    local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
+    if getn(plus_ones) > 0 then
+      local count = getn(plus_ones)
+      SendChatMessage(player_name .. " : " .. count, "RAID")
+    end
+  end
+end
+
+
+
+-- Build MS+1 counts per player
+local function build_plus_one_counts()
+  local loot = M.awarded_loot.get_winners()
+  local players = {}
+  for _, award in ipairs(loot) do
+    if award ~= nil then
+      if award.plus_one then
+        players[award.player_name] = (players[award.player_name] or 0) + 1
+      end
+    end
+  end
+  return players
+end
+
+-- Sorted bucket announcement (0,1,2,3...)
+local function announce_ms_sorted()
+  local counts = build_plus_one_counts()
+  local buckets = {}
+
+  for player, count in pairs(counts) do
+    buckets[count] = buckets[count] or {}
+    table.insert(buckets[count], player)
+  end
+
+  SendChatMessage("MS+1 Standings:", "RAID")
+
+  for count, players in pairs(buckets) do
+    local line = table.concat(players, " ")
+    SendChatMessage(count .. ": " .. line, "RAID")
+  end
+end
+
+-- Compact one-line version
+local function announce_ms_compact()
+  local counts = build_plus_one_counts()
+  local parts = {}
+
+  for player, count in pairs(counts) do
+    table.insert(parts, player .. "(" .. count .. ")")
+  end
+
+  SendChatMessage("MS+1: " .. table.concat(parts, " "), "RAID")
+end
+
 local function setup_slash_commands()
   -- Roll For commands
   SLASH_RF1 = RollSlashCommand.NormalRoll
@@ -842,7 +912,13 @@ local function setup_slash_commands()
 
 
   SLASH_PL1 = "/pl"
+  SLASH_PLR1 = "/plraid"
+  SLASH_MS1 = "/ms"
+  SLASH_MSC1 = "/mscompact"
   M.api().SlashCmdList[ "PL"] = plus_ones_command
+  M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
+  M.api().SlashCmdList[ "MS"] = announce_ms_sorted
+  M.api().SlashCmdList[ "MSC"] = announce_ms_compact
 
   --SLASH_DROPPED1 = "/DROPPED"
   --M.api().SlashCmdList[ "DROPPED" ] = simulate_loot_dropped
