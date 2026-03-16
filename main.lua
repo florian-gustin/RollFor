@@ -820,7 +820,7 @@ local function announce_plus_ones_raid()
     local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
     if getn(plus_ones) > 0 then
       local count = getn(plus_ones)
-      SendChatMessage(player_name .. " : " .. count, "RAID")
+      SendChatMessage(player_name .. " + " .. count, "RAID")
     end
   end
 end

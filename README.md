@@ -198,6 +198,28 @@ The SR data from *Raidres* is a **Base64** encoded **JSON**. Decode it to see wh
 
 ---
 
+## MS+1 Standings
+
+The addon keeps track of MS+1 standings if you enable it in the config.
+
+If you want to announce the standings, use:
+
+```
+/plr
+```
+for complete standings
+
+```
+/ms
+```
+for sorted buckets (only player names and MS+1 points)
+
+```
+/mscompact
+```
+for sorted buckets (only player names and MS+1 points) compact format
+
+---
 
 ### Fixing mistyped player names in SR setup
 
