@@ -202,9 +202,9 @@ The SR data from *Raidres* is a **Base64** encoded **JSON**. Decode it to see wh
 
 The addon keeps track of MS+1 standings if you enable it in the config.
 
-![ms+1config.png](ms%2B1config.png)
-![ms+1overwiew.png](ms%2B1overwiew.png)
-![ms+1confirmbox.png](ms%2B1confirmbox.png)
+![ms+1config.png](img/ms%2B1config.png)
+![ms+1overwiew.png](img/ms%2B1overwiew.png)
+![ms+1confirmbox.png](img/ms%2B1confirmbox.png)
 
 ### If you want to announce the standings, use:
 
@@ -212,13 +212,12 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 ```
 /plr
 ```
-![ms+1plraid.png](ms%2B1plraid.png)
-
+![ms+1plraid.png](img/ms%2B1plraid.png)
 #### Standings (player names and MS+1 points only):
 ```
 /ms
 ```
-![ms+1ms.png](ms%2B1ms.png)
+![ms+1ms.png](img/ms%2B1ms.png)
 
 #### Single-line standings (player names and MS+1 points only):
 ```
