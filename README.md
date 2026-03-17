@@ -207,14 +207,22 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 ![ms+1confirmbox.png](img/ms%2B1confirmbox.png)
 
 ### If you want to announce the standings, use:
-
 #### Complete standings (automatically displayed after each +1 item is awarded):
 ```
 /plr
 ```
 ![ms+1plraid.png](img/ms%2B1plraid.png)
 
+### If you want to manually adjust MS+1 standings, use:
+#### Add +1 item to player (use any item link, it doesn't have to be the actual item):
+```
+/pl add <player name> <item link>
+```
 
+#### Remove +1 item from player (use any item link, it doesn't have to be the actual item):
+```
+/pl remove <player name> <item link>
+```
 ---
 
 ### Fixing mistyped player names in SR setup
