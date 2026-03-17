@@ -214,13 +214,13 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 ```
 ![ms+1plraid.png](ms%2B1plraid.png)
 
-#### Ranking standings (only player names and MS+1 points):
+#### Standings (player names and MS+1 points only):
 ```
 /ms
 ```
 ![ms+1ms.png](ms%2B1ms.png)
 
-#### Ranking compact standings (only player names and MS+1 points):
+#### Single-line standings (player names and MS+1 points only):
 ```
 /mscompact
 ```
