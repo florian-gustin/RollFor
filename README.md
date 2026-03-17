@@ -208,21 +208,12 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 
 ### If you want to announce the standings, use:
 
-#### Complete standings :
+#### Complete standings (automatically displayed after each +1 item is awarded):
 ```
 /plr
 ```
 ![ms+1plraid.png](img/ms%2B1plraid.png)
-#### Standings (player names and MS+1 points only):
-```
-/ms
-```
-![ms+1ms.png](img/ms%2B1ms.png)
 
-#### Single-line standings (player names and MS+1 points only):
-```
-/mscompact
-```
 
 ---
 
