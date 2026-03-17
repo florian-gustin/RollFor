@@ -207,17 +207,17 @@ If you want to announce the standings, use:
 ```
 /plr
 ```
-for complete standings
+for complete standings.
 
 ```
 /ms
 ```
-for sorted buckets (only player names and MS+1 points)
+from the lowest MS+1 points to highest (only player names and MS+1 points)
 
 ```
 /mscompact
 ```
-for sorted buckets (only player names and MS+1 points) compact format
+for the highest MS+1 points to lowest (only player names and MS+1 points) as single line.
 
 ---
 

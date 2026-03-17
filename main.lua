@@ -851,7 +851,7 @@ local function announce_ms_sorted()
     table.insert(buckets[count], player)
   end
 
-  SendChatMessage("MS+1 Standings:", "RAID")
+  SendChatMessage("MS+1 (from lowest to highest penalties):", "RAID")
 
   for count, players in pairs(buckets) do
     local line = table.concat(players, " ")
@@ -868,7 +868,7 @@ local function announce_ms_compact()
     table.insert(parts, player .. "(" .. count .. ")")
   end
 
-  SendChatMessage("MS+1: " .. table.concat(parts, " "), "RAID")
+  SendChatMessage("MS+1 (from highest to lowest penalties): " .. table.concat(parts, " "), "RAID")
 end
 
 local function setup_slash_commands()
