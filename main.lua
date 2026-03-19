@@ -827,17 +827,17 @@ end
 
 
 local function announce_full_ms_list()
-  local loot = M.awarded_loot.get_winners()
-  local players = {}
-  for _, award in ipairs(loot) do
-    if award ~= nil then
-      if not players[award.player_name] then
-        players[award.player_name] = { award }
-      else
-        table.insert(players[award.player_name], award)
-      end
+    local loot = M.awarded_loot.get_winners()
+    local players = {}
+    for _, award in ipairs(loot) do
+        if award ~= nil then
+          if not players[award.player_name] then
+                players[award.player_name] = { award }
+          else
+            table.insert(players[award.player_name], award)
+          end
+        end
     end
-  end
 
     local plus_ones_exist = false
     for player_name, awards in pairs(players) do
@@ -899,8 +899,8 @@ local function setup_slash_commands()
   M.api().SlashCmdList[ "PL"] = plus_ones_command
   M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
 
-  SLASH_MSLIST1 = "/msl"
-  M.api().SlashCmdList[ "MSL"] = announce_full_ms_list
+  SLASH_MSLIST1 = "/mslist"
+  M.api().SlashCmdList[ "MSLIST"] = announce_full_ms_list
 
   --SLASH_DROPPED1 = "/DROPPED"
   --M.api().SlashCmdList[ "DROPPED" ] = simulate_loot_dropped
