@@ -846,12 +846,13 @@ local function announce_full_ms_list()
         plus_ones_exist = true
         local item_list = table.concat(m.map(plus_ones, (function (a) return a.item_link end)), " ")
         local colored_player_name = m.colorize_player_by_class( player_name, awards[1].player_class ) or grey( player_name )
-        M.chat.info( colored_player_name .. green(" MS +" .. getn(plus_ones)) .. ": " .. item_list)
+        SendChatMessage( colored_player_name .. green(" MS +" .. getn(plus_ones)) .. ": " .. item_list)
       end
     end
     if not plus_ones_exist then
-      M.chat.info("There are no +1's yet")
+      SendChatMessage("There are no +1's yet")
     end
+
 end
 
 local function setup_slash_commands()
@@ -899,8 +900,8 @@ local function setup_slash_commands()
   M.api().SlashCmdList[ "PL"] = plus_ones_command
   M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
 
-  SLASH_MSLIST1 = "/mslist"
-  M.api().SlashCmdList[ "MSLIST"] = announce_full_ms_list
+  SLASH_MSLIST1 = "/msl"
+  M.api().SlashCmdList[ "MSL"] = announce_full_ms_list
 
   --SLASH_DROPPED1 = "/DROPPED"
   --M.api().SlashCmdList[ "DROPPED" ] = simulate_loot_dropped
