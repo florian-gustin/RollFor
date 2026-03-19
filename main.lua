@@ -802,9 +802,34 @@ local function plus_ones_command( args )
 end
 
 
+--local function announce_plus_ones_raid()
+--  local loot = M.awarded_loot.get_winners()
+--  local players = {}
+--  for _, award in ipairs(loot) do
+--    if award ~= nil then
+--      if not players[award.player_name] then
+--        players[award.player_name] = { award }
+--      else
+--        table.insert(players[award.player_name], award)
+--      end
+--    end
+--  end
+--
+--  SendChatMessage("MS+1 standings:", "RAID")
+--  for player_name, awards in pairs(players) do
+--    local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
+--    if getn(plus_ones) > 0 then
+--      local count = getn(plus_ones)
+--      SendChatMessage(player_name .. " + " .. count, "RAID")
+--    end
+--  end
+--end
+
 local function announce_plus_ones_raid()
   local loot = M.awarded_loot.get_winners()
   local players = {}
+
+  -- Build player → awards table
   for _, award in ipairs(loot) do
     if award ~= nil then
       if not players[award.player_name] then
@@ -815,13 +840,31 @@ local function announce_plus_ones_raid()
     end
   end
 
-  SendChatMessage("MS+1 standings:", "RAID")
+  -- Build sortable list
+  local sorted = {}
+
   for player_name, awards in pairs(players) do
-    local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
-    if getn(plus_ones) > 0 then
-      local count = getn(plus_ones)
-      SendChatMessage(player_name .. " + " .. count, "RAID")
+    local plus_ones = m.filter(awards, function(a) return a.plus_one end)
+    local count = getn(plus_ones)
+
+    if count > 0 then
+      table.insert(sorted, {
+        name = player_name,
+        count = count
+      })
     end
+  end
+
+  -- Sort DESCENDING (highest first)
+  table.sort(sorted, function(a, b)
+    return a.count > b.count
+  end)
+
+  -- Announce
+  SendChatMessage("MS+1 standings:", "RAID")
+
+  for _, player in ipairs(sorted) do
+    SendChatMessage(player.name .. " + " .. player.count, "RAID")
   end
 end
 
