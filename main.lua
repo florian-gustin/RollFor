@@ -827,37 +827,37 @@ end
 
 
 local function announce_full_ms_list()
-  if not M or not M.awarded_loot then
-    return
-  end
-
-  local loot = M.awarded_loot.get_winners()
-  if not loot then return end
-
-  local players = {}
-
-  -- Build player → items table
-  for _, award in ipairs(loot) do
-    if award and award.plus_one then
-      if not players[award.player_name] then
-        players[award.player_name] = {}
-      end
-      table.insert(players[award.player_name], award.item_link)
-    end
-  end
-
-  if not next(players) then
-    SendChatMessage("No MS+1 loot yet.", "RAID")
-    return
-  end
-
-  SendChatMessage("MS+1 Loot List:", "RAID")
-
-  for player, items in pairs(players) do
-    local count = #items
-    local item_list = table.concat(items, " ")
-    SendChatMessage(player .. " (" .. count .. "): " .. item_list, "RAID")
-  end
+  --if not M or not M.awarded_loot then
+  --  return
+  --end
+  --
+  --local loot = M.awarded_loot.get_winners()
+  --if not loot then return end
+  --
+  --local players = {}
+  --
+  ---- Build player → items table
+  --for _, award in ipairs(loot) do
+  --  if award and award.plus_one then
+  --    if not players[award.player_name] then
+  --      players[award.player_name] = {}
+  --    end
+  --    table.insert(players[award.player_name], award.item_link)
+  --  end
+  --end
+  --
+  --if not next(players) then
+  --  SendChatMessage("No MS+1 loot yet.", "RAID")
+  --  return
+  --end
+  --
+  --SendChatMessage("MS+1 Loot List:", "RAID")
+  --
+  --for player, items in pairs(players) do
+  --  local count = #items
+  --  local item_list = table.concat(items, " ")
+  --  SendChatMessage(player .. " (" .. count .. "): " .. item_list, "RAID")
+  --end
 end
 
 local function setup_slash_commands()
