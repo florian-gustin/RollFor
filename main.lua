@@ -846,11 +846,11 @@ local function announce_full_ms_list()
         plus_ones_exist = true
         local item_list = table.concat(m.map(plus_ones, (function (a) return a.item_link end)), " ")
         local colored_player_name = m.colorize_player_by_class( player_name, awards[1].player_class ) or grey( player_name )
-        SendChatMessage( colored_player_name .. green(" MS +" .. getn(plus_ones)) .. ": " .. item_list)
+        M.chat.announce( colored_player_name .. green(" MS +" .. getn(plus_ones)) .. ": " .. item_list)
       end
     end
     if not plus_ones_exist then
-      SendChatMessage("There are no +1's yet")
+      M.chat.announce("There are no +1's yet")
     end
 end
 
