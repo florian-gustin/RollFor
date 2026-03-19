@@ -215,16 +215,20 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 
 ### If you want to manually adjust MS+1 standings, use:
 #### Add +1 item to player:
-⚠️ use any item link, it doesn't have to be the actual item:
 ```
 /pl add <player name> <item link>
 ```
 
 #### Remove +1 item from player :
-⚠️ you should use the same item link as you used to add the item, otherwise it won't work:
 ```
 /pl remove <player name> <item link>
 ```
+
+### If you want to display the complete MS loot list history, use:
+```
+/mslist
+```
+
 ---
 
 ### Fixing mistyped player names in SR setup
