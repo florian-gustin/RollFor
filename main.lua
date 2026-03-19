@@ -867,7 +867,7 @@ local function setup_slash_commands()
 
 
   SLASH_PL1 = "/pl"
-  SLASH_PLR1 = "/plraid"
+  SLASH_PLR1 = "/plr"
   M.api().SlashCmdList[ "PL"] = plus_ones_command
   M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
 
