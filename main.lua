@@ -825,28 +825,6 @@ local function announce_plus_ones_raid()
   end
 end
 
-local function announce_full_ms_list()
-  local loot = RollFor.awarded_loot.get_winners()
-  local players = {}
-
-  -- Build player → items table
-  for _, award in ipairs(loot) do
-    if award and award.plus_one then
-      if not players[award.player_name] then
-        players[award.player_name] = {}
-      end
-      table.insert(players[award.player_name], award.item_link)
-    end
-  end
-
-  SendChatMessage("MS+1 Loot List:", "RAID")
-
-  for player, items in pairs(players) do
-    local count = #items
-    local item_list = table.concat(items, " ")
-    SendChatMessage(player .. " (" .. count .. "): " .. item_list, "RAID")
-  end
-end
 
 local function setup_slash_commands()
   -- Roll For commands
@@ -892,8 +870,7 @@ local function setup_slash_commands()
   SLASH_PLR1 = "/plr"
   M.api().SlashCmdList[ "PL"] = plus_ones_command
   M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
-  SLASH_MSLIST1 = "/msl"
-  M.api().SlashCmdList["MSL"] = announce_full_ms_list
+
   --SLASH_DROPPED1 = "/DROPPED"
   --M.api().SlashCmdList[ "DROPPED" ] = simulate_loot_dropped
 end
