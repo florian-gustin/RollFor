@@ -827,7 +827,7 @@ end
 
 
 local function announce_full_ms_list()
-  local loot = RollFor.awarded_loot.get_winners()
+  local loot = M.awarded_loot.get_winners()
   local players = {}
 
   -- Build player → items table
