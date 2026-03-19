@@ -899,8 +899,8 @@ local function setup_slash_commands()
   M.api().SlashCmdList[ "PL"] = plus_ones_command
   M.api().SlashCmdList[ "PLR"] = announce_plus_ones_raid
 
-  SLASH_MSLIST1 = "/msl"
-  M.api().SlashCmdList[ "MSL"] = announce_full_ms_list
+  SLASH_MSLIST1 = "/mslist"
+  M.api().SlashCmdList[ "MSLIST"] = announce_full_ms_list
 
   --SLASH_DROPPED1 = "/DROPPED"
   --M.api().SlashCmdList[ "DROPPED" ] = simulate_loot_dropped
