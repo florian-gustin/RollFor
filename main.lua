@@ -827,37 +827,31 @@ end
 
 
 local function announce_full_ms_list()
-  --if not M or not M.awarded_loot then
-  --  return
-  --end
-  --
-  --local loot = M.awarded_loot.get_winners()
-  --if not loot then return end
-  --
-  --local players = {}
-  --
-  ---- Build player → items table
-  --for _, award in ipairs(loot) do
-  --  if award and award.plus_one then
-  --    if not players[award.player_name] then
-  --      players[award.player_name] = {}
-  --    end
-  --    table.insert(players[award.player_name], award.item_link)
-  --  end
-  --end
-  --
-  --if not next(players) then
-  --  SendChatMessage("No MS+1 loot yet.", "RAID")
-  --  return
-  --end
-  --
-  --SendChatMessage("MS+1 Loot List:", "RAID")
-  --
-  --for player, items in pairs(players) do
-  --  local count = #items
-  --  local item_list = table.concat(items, " ")
-  --  SendChatMessage(player .. " (" .. count .. "): " .. item_list, "RAID")
-  --end
+  local loot = M.awarded_loot.get_winners()
+  local players = {}
+  for _, award in ipairs(loot) do
+    if award ~= nil then
+      if not players[award.player_name] then
+        players[award.player_name] = { award }
+      else
+        table.insert(players[award.player_name], award)
+      end
+    end
+  end
+
+    local plus_ones_exist = false
+    for player_name, awards in pairs(players) do
+      local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
+      if getn(plus_ones) > 0 then
+        plus_ones_exist = true
+        local item_list = table.concat(m.map(plus_ones, (function (a) return a.item_link end)), " ")
+        local colored_player_name = m.colorize_player_by_class( player_name, awards[1].player_class ) or grey( player_name )
+        M.chat.info( colored_player_name .. green(" MS +" .. getn(plus_ones)) .. ": " .. item_list)
+      end
+    end
+    if not plus_ones_exist then
+      M.chat.info("There are no +1's yet")
+    end
 end
 
 local function setup_slash_commands()
