@@ -224,7 +224,7 @@ The addon keeps track of MS+1 standings if you enable it in the config.
 /pl remove <player name> <item link>
 ```
 
-### If you want to display the complete MS loot list history, use:
+### If you want to display the complete MS+1 loot history, use:
 ```
 /mslist
 ```

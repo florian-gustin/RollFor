@@ -883,6 +883,8 @@ local function announce_full_ms_list()
     end
 
     local plus_ones_exist = false
+    -- Announce
+    M.chat.announce("MS+1 loot history:")
     for player_name, awards in pairs(players) do
       local plus_ones = m.filter(awards, (function(a) return a.plus_one end))
       if getn(plus_ones) > 0 then
