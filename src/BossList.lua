@@ -52,6 +52,9 @@ M.zones    = {
     "Ayamiss the Hunter",
     "Ossirian the Unscarred"
   },
+  [ "Timbermaw Hold" ] = {
+
+  },
   [ "Molten Core" ] = {
     "Incindis",
     "Basalthar",
